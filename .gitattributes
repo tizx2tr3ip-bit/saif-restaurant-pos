@@ -5,3 +5,6 @@
 *.yml text eol=lf
 *.yaml text eol=lf
 *.ps1 text eol=crlf
+
+# Preserve the exact upstream source bytes on every OS (snapshot hashes).
+vendor/odoo/** -text

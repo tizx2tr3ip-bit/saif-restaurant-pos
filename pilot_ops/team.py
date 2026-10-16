@@ -1,5 +1,5 @@
 """Cross-platform isolated pilot launcher; stdlib only. Never manages Saif's existing stack."""
-import argparse,json,os,re,secrets,subprocess,sys
+import argparse,hashlib,json,os,re,secrets,subprocess,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 LOCK=json.loads((ROOT/'source.lock.json').read_text())
@@ -24,24 +24,24 @@ def init(name,port):
  cfg.write_text('[options]\naddons_path = /opt/odoo-source/odoo/addons,/opt/odoo-source/addons,/opt/custom-addons\ndata_dir = /var/lib/odoo\ndb_host = db\ndb_port = 5432\ndb_user = saif_pilot\ndb_password = '+e['PILOT_DB_PASSWORD']+'\ndb_name = saif_pilot\ndbfilter = ^saif_pilot$\nlist_db = False\nadmin_passwd = '+secrets.token_urlsafe(32)+'\nhttp_port = 8069\nhttp_interface = 0.0.0.0\nworkers = 0\nproxy_mode = False\n')
  cfg.chmod(0o600)
  print('Created local secrets; do not commit them. Pilot admin password is in pilot_ops/.env.')
-def source():
+def verify_source():
  p=ROOT/LOCK['source_checkout']
- if p.exists() and any(p.iterdir()):
-  if not (p/'.git').exists():raise SystemExit('Source path exists but is not a Git checkout; not touching it.')
-  actual=subprocess.check_output(['git','-C',str(p),'rev-parse','HEAD'],text=True).strip()
-  if actual!=LOCK['commit']:raise SystemExit('Source commit differs; refusing to reset developer work.')
-  print('Source already pinned.');return
- p.mkdir(parents=True,exist_ok=True)
- run(['git','init',str(p)])
- run(['git','-C',str(p),'remote','add','origin',LOCK['repository']])
- run(['git','-C',str(p),'fetch','--depth=1','origin',LOCK['commit']])
- run(['git','-C',str(p),'checkout','--detach','FETCH_HEAD'])
- print('Official source pinned; local project code remains separate.')
+ manifest=ROOT/LOCK['snapshot_manifest']
+ if hashlib.sha256(manifest.read_bytes()).hexdigest()!=LOCK['snapshot_sha256']:
+  raise SystemExit('Source inventory differs from lock; review changes before bootstrap.')
+ inventory=json.loads(manifest.read_text())
+ for name,digest in inventory.items():
+  f=p/name
+  if not f.is_file() or hashlib.sha256(f.read_bytes()).hexdigest()!=digest:
+   raise SystemExit('Source differs from pinned snapshot: '+name+'; review changes rather than resetting work.')
+ return len(inventory)
+def source():
+ count=verify_source()
+ print(f'Full official source is included: {count} verified files. No extra source download needed.')
 def bootstrap():
  e=read_env();p=ROOT/LOCK['source_checkout']
  if not (p/'odoo/cli').exists():raise SystemExit('Run source first.')
- actual=subprocess.check_output(['git','-C',str(p),'rev-parse','HEAD'],text=True).strip()
- if actual!=LOCK['commit']:raise SystemExit('Source commit differs; refusing bootstrap.')
+ verify_source()
  compose('up','-d','db')
  compose('run','--rm','-T','app','--config=/etc/odoo/odoo.conf','-d',e['PILOT_DB_NAME'],'-i','l10n_om,pos_restaurant,pos_self_order,saif_cafe_order,saif_cafe_kitchen,lab_login_branding','--without-demo=True','--stop-after-init','--no-http')
  compose('run','--rm','-T','app','shell','--config=/etc/odoo/odoo.conf','-d',e['PILOT_DB_NAME'],'--no-http',input="exec(open('/opt/seed_demo.py').read())\n",text=True)
