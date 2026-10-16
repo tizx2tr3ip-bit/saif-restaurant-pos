@@ -1,0 +1,69 @@
+{
+  "note": "Selected custom addons copied byte-for-byte from Saif local project; no source/core changes.",
+  "files": [
+    {
+      "path": "custom_addons/saif_cafe_order/__init__.py",
+      "sha256": "fa84865b0b456f510a03a7c1cc9d97831923ec92d603c26a66ee1dcfd51654a4"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/README.md",
+      "sha256": "c03af128c1260f48bb7eedd869ac003ced1b86d5b5f714cd284610d933f73a10"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/__manifest__.py",
+      "sha256": "63934ac56d374aa0ae9f05b9f956e6c534e8058d84a822e958cc35b20a35ec53"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/tests/test_model_shell.py",
+      "sha256": "6562f7ac043c79e296bbe3190b905071a5bc102d3a499682705c771b423cbbd8"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/tests/test_api_standalone.py",
+      "sha256": "417bb6ab15262adbe21c56f47e1f9f4d7a8d53b8b064f1fa1a89412476c078b6"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/models/__init__.py",
+      "sha256": "141379caecdf1add1eb66f1980c458301f6a84fbfeb192769938a50a45b8d49b"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/models/cafe.py",
+      "sha256": "4de7b532519ace863547574f17cc737bb46b4f2165fcb5f74113d1c4e082da8c"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/static/src/menu.js",
+      "sha256": "25a9ad8f6e7e493f980d73cbf81e8b7c8b98c8853ff649c626e377ec3a237947"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/static/src/menu.css",
+      "sha256": "4e1f25fcf5c63878b4bd11deb5fae480b085e05c298c5031bd13de6d2453b346"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/controllers/__init__.py",
+      "sha256": "e0a16a10fd901c56cf37ae9e40931d1ac98dcf6bfbcb05affc5475a56fe490b9"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/controllers/main.py",
+      "sha256": "762ae32afaa78a43a2fe183c06fef403b5612aaf596992ca20fbcce0e33eee0f"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/views/order.xml",
+      "sha256": "2688b9f039e9bd3a1e504950826762caee07b567e5e1e02899f4a4598a236ad8"
+    },
+    {
+      "path": "custom_addons/saif_cafe_order/views/page.xml",
+      "sha256": "efc032a65b3a7e601919c8bd723e4e104c0ac70ebc69fdbb16e391a4e44572a4"
+    },
+    {
+      "path": "custom_addons/lab_login_branding/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "custom_addons/lab_login_branding/__manifest__.py",
+      "sha256": "a490ed42184081b61101349f2e1fe73567feac0f19b00546c592bad96686733f"
+    },
+    {
+      "path": "custom_addons/lab_login_branding/views/login.xml",
+      "sha256": "acc0ad5a28a2e0aa1a2b2a3d62326dfb826c642f0175b766c4f78093b91aceef"
+    }
+  ]
+}

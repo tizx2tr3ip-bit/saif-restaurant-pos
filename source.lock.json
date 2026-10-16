@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/odoo/odoo.git",
+  "commit": "3ab21d47f92a25fd973e0687886a9d3ea5946ed4",
+  "series": "20.0",
+  "runtime_image": "odoo@sha256:cdd83e8359b3e8c357895d476396c05021fed9975bf420f353bab25fcaed1533",
+  "postgres_image": "postgres:16",
+  "source_checkout": "vendor/odoo",
+  "note": "Official Community source, independent pinned checkout; no Enterprise. Runtime image supplies third-party dependencies. Windows Docker execution needs Ibrahim's verification."
+}

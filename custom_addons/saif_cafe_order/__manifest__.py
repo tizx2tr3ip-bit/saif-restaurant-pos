@@ -1,0 +1,1 @@
+{'name': 'Saif Cafe Customer Ordering', 'version': '20.0.1.0.1', 'license': 'LGPL-3', 'author': 'Saif', 'depends': ['pos_self_order'], 'data': ['views/page.xml','views/order.xml'], 'installable': True}

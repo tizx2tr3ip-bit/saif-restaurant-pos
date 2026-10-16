@@ -1,0 +1,3 @@
+[submodule "vendor/odoo"]
+	path = vendor/odoo
+	url = https://github.com/odoo/odoo.git
