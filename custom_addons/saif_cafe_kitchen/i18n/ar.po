@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Language: ar\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Kitchen"
+msgstr "المطبخ"
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Kitchen / Bar"
+msgstr "المطبخ / البار"
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Refresh"
+msgstr "تحديث"
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Pilot kitchen board · Refreshes every 10 seconds · Preparation is independent of payment."
+msgstr "شاشة مطبخ تجريبية · تتحدث كل 10 ثوانٍ · التحضير مستقل عن الدفع."
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Order updated."
+msgstr "تم تحديث الطلب."
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "The order changed. Please review its current state."
+msgstr "تغيّر الطلب. راجع حالته الحالية."
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Showing the oldest 100 active orders. More orders are waiting."
+msgstr "تظهر أقدم 100 طلب نشط. توجد طلبات أخرى بالانتظار."
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "No orders waiting for preparation."
+msgstr "لا توجد طلبات بانتظار التحضير."
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Car:"
+msgstr "السيارة:"
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Table:"
+msgstr "الطاولة:"
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Start preparation"
+msgstr "بدء التحضير"
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Mark ready"
+msgstr "جاهز للاستلام"
+
+#. module: saif_cafe_kitchen
+#: model_terms:ir.ui.view,arch_db:saif_cafe_kitchen.board
+msgid "Handed over"
+msgstr "تم التسليم"
+
+#. module: saif_cafe_kitchen
+#: model:ir.model.fields.selection,name:saif_cafe_kitchen.selection__pos_order__saif_kitchen_state__new
+msgid "New"
+msgstr "جديد"
+
+#. module: saif_cafe_kitchen
+#: model:ir.model.fields.selection,name:saif_cafe_kitchen.selection__pos_order__saif_kitchen_state__preparing
+msgid "Preparing"
+msgstr "قيد التحضير"
+
+#. module: saif_cafe_kitchen
+#: model:ir.model.fields.selection,name:saif_cafe_kitchen.selection__pos_order__saif_kitchen_state__ready
+msgid "Ready"
+msgstr "جاهز"

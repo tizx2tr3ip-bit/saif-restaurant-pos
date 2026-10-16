@@ -154,4 +154,9 @@ class Order(models.Model):
 
     @api.model
     def _load_pos_data_fields(self,config):
-        return super()._load_pos_data_fields(config)+['saif_service','saif_car_number','saif_car_color','saif_car_type']
+        fields = super()._load_pos_data_fields(config)
+        # In Odoo 20 an empty list means all fields, including order lines.
+        # Replacing it with our fields alone breaks the POS relation metadata.
+        if not fields:
+            return fields
+        return list(dict.fromkeys(fields + ['saif_service','saif_car_number','saif_car_color','saif_car_type']))
