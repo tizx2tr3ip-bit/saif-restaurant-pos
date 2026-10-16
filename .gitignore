@@ -42,3 +42,8 @@ Thumbs.db
 
 # Optional upstream source checkout, managed separately
 vendor/odoo/
+
+# Shared pilot bootstrap generated files
+.runtime/
+pilot_ops/.env
+!pilot_ops/.env.example

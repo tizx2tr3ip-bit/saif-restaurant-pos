@@ -1,0 +1,24 @@
+{
+  "checked_at_local_date": "2026-10-16",
+  "platform": "macOS arm64 / Docker Linux containers",
+  "fresh_database_bootstrap": "passed",
+  "windows_execution": "not tested; assigned to Ibrahim",
+  "customer_api": {
+    "result": "passed",
+    "config": 1,
+    "car_order": "260-1-000001",
+    "table_order": "260-1-000002",
+    "quote": 0.4,
+    "idempotent_retry": true,
+    "note": "Two unpaid draft test orders retained; POS visibility/printing not proven."
+  },
+  "addon_inventory": "16 files byte-identical to Saif snapshot",
+  "secret_scan": "selected files reviewed; known token/private-key patterns absent; generated env and runtime ignored",
+  "not_proven": [
+    "visual POS order visibility",
+    "kitchen display/printing",
+    "payment/refund accounting cycle",
+    "physical iPad/printer",
+    "all language support"
+  ]
+}

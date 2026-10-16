@@ -2,7 +2,7 @@
 
 مستودع التعاون لتطوير نظام نقاط البيع للمطعم على Odoo Community 20.
 
-هذه تهيئة للتعاون فقط؛ لم تتم إضافة كود التطبيق أو قواعد بيانات أو تعديل النظام المحلي.
+يتضمن فرع التسليم إضافات الطلب الحالية وحزمة تشغيل محلية معزولة. لا توجد قواعد بيانات أو أسرار أو Enterprise. ندمج إلى main بعد مراجعة إبراهيم.
 
 ## تنظيم العمل
 
@@ -27,4 +27,19 @@
 المستهدف بحسب تسليم المشروع: Odoo Community 20 عند commit:
 `3ab21d47f92a25fd973e0687886a9d3ea5946ed4`
 
-هذا مرجع مطلوب التحقق منه عند استلام المصدر؛ لم يُنزّل أو يُتحقق منه ضمن إعداد GitHub. لا توجد إضافات Enterprise أو خدمات مدفوعة في هذه التهيئة.
+جُلب هذا المصدر الرسمي وتحققنا من commit في نسخة التسليم المستقلة. يشير إليه Git submodule وsource.lock.json؛ لا يُنسخ مصدر أودو إلى تاريخ مشروعنا. لا توجد إضافات Enterprise.
+
+
+## ابدأ هنا — حزمة المصدر والتجربة
+
+[خطوات Windows والتشغيل](docs/pilot/START-HERE-AR.md) · [حالة الميزات والاختبارات](docs/pilot/STATUS-AR.md) · [مهمة إبراهيم التالية](docs/pilot/IBRAHIM-NEXT-TASK.md) · [تقسيم المهام](docs/coordination.md).
+
+المصدر الرسمي مثبت كـGit submodule تحت `vendor/odoo` ويطابق `source.lock.json`. لتقليل التنزيل، استنسخ مستودع الفريق أولاً ثم استخدم أمر `source` أدناه لجلب commit واحد. لا تنسخ تثبيت Windows الحالي فوق هذا المصدر.
+
+```sh
+python pilot_ops/team.py init --name ibrahim --port 8072
+python pilot_ops/team.py source
+python pilot_ops/team.py bootstrap
+```
+
+في Windows يمكن استخدام `py -3` بدلاً من `python`. يحتاج Git وPython 3.9+ وDocker Desktop مع Linux containers. هذه حزمة تطوير محلية فقط؛ لا تنشرها للإنتاج.

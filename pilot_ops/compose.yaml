@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: saif_pilot
+      POSTGRES_PASSWORD: ${PILOT_DB_PASSWORD:?Run team.py init}
+      POSTGRES_DB: postgres
+    volumes:
+      - team-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U saif_pilot -d postgres]
+      interval: 3s
+      timeout: 5s
+      retries: 30
+  app:
+    image: ${ODOO_RUNTIME_IMAGE:?Run team.py init}
+    entrypoint: [python3, /opt/launch_source.py]
+    command: [--config=/etc/odoo/odoo.conf]
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python3, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8069/web/health', timeout=5)"]
+      interval: 3s
+      timeout: 6s
+      retries: 30
+      start_period: 15s
+    ports:
+      - 127.0.0.1:${PILOT_HTTP_PORT:-8072}:8069
+    volumes:
+      - ../vendor/odoo:/opt/odoo-source:ro
+      - ../custom_addons:/opt/custom-addons:ro
+      - ./launch_source.py:/opt/launch_source.py:ro
+      - ./seed_demo.py:/opt/seed_demo.py:ro
+      - ../.runtime/odoo.conf:/etc/odoo/odoo.conf:ro
+      - team-odoo-data:/var/lib/odoo
+volumes:
+  team-db-data:
+  team-odoo-data:
