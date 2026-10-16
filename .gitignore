@@ -1,0 +1,44 @@
+# Local secrets and configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+odoo.conf
+*.local.conf
+*login*.txt
+*password*.txt
+secrets/
+
+# Databases, filestores, backups and runtime
+*.dump
+*.backup
+*.sql
+*.sqlite*
+*.zip
+*.7z
+*.tar
+*.gz
+backups/
+filestore/
+pgdata/
+runtime/
+data/
+*.log
+
+# Python and editors
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Optional upstream source checkout, managed separately
+vendor/odoo/
