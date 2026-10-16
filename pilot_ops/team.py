@@ -43,7 +43,7 @@ def bootstrap():
  actual=subprocess.check_output(['git','-C',str(p),'rev-parse','HEAD'],text=True).strip()
  if actual!=LOCK['commit']:raise SystemExit('Source commit differs; refusing bootstrap.')
  compose('up','-d','db')
- compose('run','--rm','-T','app','--config=/etc/odoo/odoo.conf','-d',e['PILOT_DB_NAME'],'-i','l10n_om,pos_restaurant,pos_self_order,saif_cafe_order,lab_login_branding','--without-demo=True','--stop-after-init','--no-http')
+ compose('run','--rm','-T','app','--config=/etc/odoo/odoo.conf','-d',e['PILOT_DB_NAME'],'-i','l10n_om,pos_restaurant,pos_self_order,saif_cafe_order,saif_cafe_kitchen,lab_login_branding','--without-demo=True','--stop-after-init','--no-http')
  compose('run','--rm','-T','app','shell','--config=/etc/odoo/odoo.conf','-d',e['PILOT_DB_NAME'],'--no-http',input="exec(open('/opt/seed_demo.py').read())\n",text=True)
  compose('up','-d','--wait','app')
  print(f"Pilot: http://localhost:{e['PILOT_HTTP_PORT']}/cafe/1 (check the seed output for actual config id).")

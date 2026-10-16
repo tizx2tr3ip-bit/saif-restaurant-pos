@@ -1,0 +1,19 @@
+<odoo><template id="board" name="Saif Kitchen Board"><html t-att-lang="request.env.lang" t-att-dir="'rtl' if rtl else 'ltr'">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta http-equiv="refresh" content="10"/><title>Kitchen</title><link rel="stylesheet" href="/saif_cafe_kitchen/static/src/kitchen.css"/></head>
+<body><header><div><h1>Kitchen / Bar</h1><span t-out="config.name"/></div><a t-att-href="'/cafe/kitchen/%s' % config.id">Refresh</a></header>
+<p class="notice">Pilot kitchen board · Refreshes every 10 seconds · Preparation is independent of payment.</p>
+<p t-if="notice" class="notice">Order updated.</p><p t-if="error" class="warning">The order changed. Please review its current state.</p>
+<p t-if="truncated" class="warning">Showing the oldest 100 active orders. More orders are waiting.</p>
+<main><p t-if="not orders">No orders waiting for preparation.</p>
+<article t-foreach="orders" t-as="order" t-att-class="'card ' + (order.saif_kitchen_state or 'new')">
+<div class="top"><strong t-out="order.pos_reference"/><span t-field="order.date_order"/></div>
+<h2 t-out="order.floating_order_name or order.table_id.display_name or order.name"/>
+<p class="state"><span t-field="order.saif_kitchen_state"/></p>
+<p t-if="order.saif_service == 'car'"><span>Car:</span> <strong t-out="order.saif_car_number"/> <span t-out="order.saif_car_type"/> <span t-out="order.saif_car_color"/></p>
+<p t-if="order.table_id"><span>Table:</span> <strong t-out="order.table_id.table_number"/></p>
+<p t-if="order.general_customer_note" class="note" t-out="order.general_customer_note"/>
+<ul><li t-foreach="order.lines.filtered(lambda line: line.qty &gt; 0)" t-as="line"><strong><span t-out="line.qty"/> × <span t-out="line.full_product_name or line.product_id.display_name"/></strong><p t-if="line.customer_note" class="note" t-out="line.customer_note"/></li></ul>
+<form t-if="order.saif_kitchen_state != 'served'" t-att-action="'/cafe/kitchen/%s/state' % config.id" method="post">
+<input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/><input type="hidden" name="order_id" t-att-value="order.id"/><input type="hidden" name="target" t-att-value="next_states[order.saif_kitchen_state or 'new']"/>
+<button t-if="not order.saif_kitchen_state or order.saif_kitchen_state == 'new'">Start preparation</button><button t-elif="order.saif_kitchen_state == 'preparing'">Mark ready</button><button t-else="">Handed over</button>
+</form></article></main></body></html></template></odoo>
