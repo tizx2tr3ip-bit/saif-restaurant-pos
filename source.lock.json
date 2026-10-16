@@ -5,5 +5,8 @@
   "runtime_image": "odoo@sha256:cdd83e8359b3e8c357895d476396c05021fed9975bf420f353bab25fcaed1533",
   "postgres_image": "postgres:16",
   "source_checkout": "vendor/odoo",
-  "note": "Official Community source, independent pinned checkout; no Enterprise. Runtime image supplies third-party dependencies. Windows Docker execution needs Ibrahim's verification."
+  "note": "Full official Community source snapshot is tracked in this repository. Original commit and all upstream licence notices retained. No Enterprise, local secrets or databases.",
+  "source_mode": "vendored",
+  "snapshot_manifest": "source.snapshot.json",
+  "snapshot_sha256": "4e695b94562b811601bcc897f37b6fdc84d071fc43337dd2758781f90b50c689"
 }

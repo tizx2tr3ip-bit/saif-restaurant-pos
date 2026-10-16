@@ -43,3 +43,7 @@ python pilot_ops/team.py bootstrap
 ```
 
 في Windows يمكن استخدام `py -3` بدلاً من `python`. يحتاج Git وPython 3.9+ وDocker Desktop مع Linux containers. هذه حزمة تطوير محلية فقط؛ لا تنشرها للإنتاج.
+
+## السورس الكامل داخل مستودع الفريق
+
+في فرع `saif/full-odoo-source`، مجلد `vendor/odoo` يحتوي ملفات Odoo Community 20 الكاملة من commit المثبت في `source.lock.json`، وليس submodule. تعديلاتنا في `custom_addons`، وتشغيل التجربة في `pilot_ops`. ملفات LICENSE وCOPYRIGHT والتراخيص الأصلية باقية. لا تشمل هذه النسخة Enterprise أو أسرار التشغيل أو قواعد البيانات. راجع `docs/pilot/FULL-SOURCE-AR.md`.
